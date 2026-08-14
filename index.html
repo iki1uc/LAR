@@ -2,48 +2,48 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>LAR Engine</title>
-
-  <script type="module">
-    import { larEconomy } from "./Engine.js";
-    import { larSprint } from "./LAR.js";
-    import { overdrive } from "./overdrive.js";
-
-    function runEconomy() {
-      const name = modul.value;
-      out.innerText = JSON.stringify(larEconomy(name), null, 2);
-    }
-
-    function runSprint() {
-      const name = modul.value;
-      out.innerText = JSON.stringify(larSprint(name), null, 2);
-    }
-
-    function runOverdrive() {
-      const name = modul.value;
-      out.innerText = JSON.stringify(overdrive(name), null, 2);
-    }
-  </script>
+  <title>KARGA · LAR Sprint Engine</title>
 
   <style>
-    body { font-family: Arial; background:#111; color:#eee; padding:20px; }
-    input { width:300px; padding:10px; font-size:16px; }
-    button { padding:10px 20px; margin:5px; font-size:16px; }
-    pre { background:#222; padding:20px; border-radius:8px; }
+    body{background:#000;color:#0ff;font-family:monospace;padding:20px;}
+    input{padding:8px;background:#111;color:#0ff;border:1px solid #0ff;}
+    button{padding:8px 16px;background:#111;color:#0ff;border:1px solid #0ff;}
+    pre{white-space:pre-wrap;border:1px solid #0ff;padding:20px;margin-top:20px;}
   </style>
+
+  <script type="module">
+    import { karga } from "./team.js";        // NEUE KARGA v7
+    import { larSprint } from "./build.js";   // NEUE LAR Sprint v7
+
+    function runKarga(){
+      const name = document.getElementById("modul").value.trim();
+      const out  = karga(name);
+      document.getElementById("out").innerText =
+        JSON.stringify(out, null, 2);
+    }
+
+    function runSprint(){
+      const name = document.getElementById("modul").value.trim();
+      const out  = larSprint(name);
+      document.getElementById("out").innerText =
+        JSON.stringify(out, null, 2);
+    }
+
+    window.runKarga = runKarga;
+    window.runSprint = runSprint;
+  </script>
 </head>
 
 <body>
-  <h1>LAR Engine</h1>
+
+  <h1>KARGA · LAR Sprint Engine</h1>
 
   <input id="modul" placeholder="tmp007 / vec118 / re200">
 
-  <div>
-    <button onclick="runEconomy()">Economy</button>
-    <button onclick="runSprint()">Sprint</button>
-    <button onclick="runOverdrive()">Overdrive</button>
-  </div>
+  <button onclick="runKarga()">KARGA</button>
+  <button onclick="runSprint()">LAR Sprint</button>
 
-  <pre id="out"></pre>
+  <pre id="out">Bereit…</pre>
+
 </body>
 </html>
