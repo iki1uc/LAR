@@ -1,21 +1,28 @@
-# ALL · Master-Sortierer · iki1uc
+# LAR – Layer Adaptive Responder
 
-ALL ist die Oberstation des iki1uc-Systems.
-Sie erzeugt die QI/IQQ-Master-Matrix und sortiert alle RESPO-Module
-zu einer funktionalen Einheit.
+LAR ist der Symbiose-Partner von KARGA.
 
-──────────────────────────────────────────────
-## Funktionen
+KARGA prüft:
+- Achse (O, Z, T)
+- Nummernbereich (001–243)
+- Modultyp (tmp, vec, re)
+- Verträglichkeit
 
-- QI-Schaltung (Index)
-- IQQ-Schaltung (3-Zustände)
-- 9×9 Master-Matrix
-- Vorsortierung aller RESPO-Module
-- Einheitliche Basis für CUBE-MIND, META-CORE, 81×81
+LAR verstärkt:
+- gute Ergebnisse
+- korrigiert schlechte Ergebnisse
+- gibt Vorschläge
+- optimiert die Platzierung
+- erhöht Kompetenz
+- senkt Risiko
+- verbessert Slide-Modus
 
-──────────────────────────────────────────────
-## Dateien
+LAR arbeitet in 6E:
+1. Erkennen
+2. Ebene
+3. Einordnung
+4. Entscheidung
+5. Ergebnis
+6. Erweiterung
 
-- ALL.core.js – Masterengine
-- id.html – ALL-Stempel
-- index.html – ALL-Matrix + Sortierung
+LAR + KARGA = RESPO-Symbiose.
