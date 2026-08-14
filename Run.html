@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>MXU · OS Runtime</title>
+
+<style>
+body{background:#000;color:#0ff;font-family:monospace;padding:20px;}
+.box{border:1px solid #0ff;padding:20px;margin-bottom:20px;padding:20px;}
+pre{white-space:pre-wrap;}
+button{background:#111;color:#0ff;border:1px solid #0ff;padding:10px 20px;}
+</style>
+</head>
+
+<body>
+
+<h2>MXU · OS Runtime</h2>
+
+<div class="box">
+  <button onclick="run()">RUN OS</button>
+  <pre id="out">System bereit…</pre>
+</div>
+
+<script type="module">
+
+import { MXU } from "./mxu.js";
+import { AXINXA } from "./AXINXA.js";
+import { SLI } from "./sync/SLI.js";
+import { KARGA } from "./KARGA.js";
+import { LAR } from "./LAR.js";
+
+function run(){
+
+  // Module laden
+  const sys = MXU.init();
+  AXINXA.attach(sys);
+  SLI.attach(sys);
+
+  // KARGA scannt alle Module
+  const kargaOut = KARGA.scan({
+    MXU,
+    AXINXA,
+    SLI,
+    KARGA,
+    LAR
+  });
+
+  // LAR prüft die Ergebnisse
+  const larOut = LAR.resolve(kargaOut);
+
+  const out = {
+    mxu: sys,
+    karga: kargaOut,
+    lar: larOut
+  };
+
+  document.getElementById("out").innerText =
+    JSON.stringify(out, null, 2);
+}
+
+</script>
+
+</body>
+</html>
