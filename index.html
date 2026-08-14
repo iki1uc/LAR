@@ -1,37 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>GEO‑3D‑ASCII · RUN8 · iki1uc</title>
-<style>
-body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
-pre { font-size:16px; line-height:18px; }
-</style>
+  <title>LAR Engine</title>
+  <script type="module">
+    import { lar } from "./LAR.js";
+
+    function run() {
+      const name = document.getElementById("modul").value;
+      const out  = lar(name);
+      document.getElementById("out").innerText = JSON.stringify(out, null, 2);
+    }
+  </script>
 </head>
 <body>
-
-<h2>GEO‑3D‑ASCII · RUN8</h2>
-<pre id="geo">START…</pre>
-
-<script>
-let f = 0;
-
-function anim(){
-    f++;
-
-    // 3D‑Rotation simuliert durch wechselnde Tiefe
-    const depth = ["●","○","·","∙","•"];
-    const d = (i)=> depth[(f+i)%depth.length];
-
-    // Anime‑Glow simuliert durch Funken
-    const glow = (f%2 ? "✦" : "✧");
-
-    // Amiga‑Raster simuliert durch horizontale Balken
-    const raster = (f%3 ? "▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓" : "██████████████████");
-
-    const geo = `
-GEO‑3D‑ROTATION (frame ${f})
-
-X‑Axis  ─── ${d(1)} ${d(2)} ${d(3)}
-Y‑Axis  ─── ${d(2)} ${d(3)} ${d(4)}
-Z‑
+  <h1>LAR Engine</h1>
+  <input id="modul" placeholder="tmp007 / vec118 / re200">
+  <button onclick="run()">LAR testen</button>
+  <pre id="out"></pre>
+</body>
+</html>
