@@ -5,7 +5,7 @@ import { larCompetence } from "./COMP.js";
 import { larRisk } from "./RISK.js";
 import { larSlide } from "./SLIDE.js";
 import { larLayer } from "./LAYER.js";
-
+ 
 export function larSprint(name){
 
   const base = karga(name);
