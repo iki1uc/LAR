@@ -2,7 +2,7 @@ import { core } from "./CORE.js";
 import { diagnose } from "./DIAG.js";
 import { save } from "./STORE.js";
 import { ourMode } from "./OUR.js";
-
+ 
 export function karga(name){
 
   // 1) Kernanalyse
