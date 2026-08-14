@@ -1,36 +1,25 @@
 import { karga } from "../KARGA/KARGA.js";
+import { larBoost } from "./BOOST.js";
+import { larSuggest } from "./SUGGEST.js";
+import { larCompetence } from "./COMP.js";
+import { larRisk } from "./RISK.js";
+import { larSlide } from "./SLIDE.js";
+import { larLayer } from "./LAYER.js";
 
-export function larBoost(result) {
-  if (!result.ok) {
-    return {
-      ...result,
-      boost: "LAR: automatische Optimierung aktiviert",
-      suggestion: result.type === "tmp"
-        ? "tmp muss 001–081"
-        : result.type === "vec"
-        ? "vec muss 082–162"
-        : "re muss 163–243"
-    };
-  }
-
-  return {
-    ...result,
-    boost: "LAR: Ergebnis verstärkt",
-    suggestion: "Modul ist optimal platziert"
-  };
-}
-
-export function lar(name) {
+export function larSprint(name) {
   const base = karga(name);
-  const boosted = larBoost(base.result);
 
   return {
+    mode: "SPRINT",
     modul: name,
     axis: base.result.axis,
     number: base.result.num,
     ok: base.result.ok,
-    diag: base.diag,
-    boost: boosted.boost,
-    suggestion: boosted.suggestion
+    boost: larBoost(base.result).boost,
+    suggestion: larSuggest(base.result),
+    competence: larCompetence(base.result),
+    risk: larRisk(base.result),
+    slide: larSlide(base.result),
+    layer: larLayer(base.result)
   };
 }
