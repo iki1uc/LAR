@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>LAR Stage</title>
+
+  <script type="module">
+    import { larEconomy } from "./Engine.js";
+    import { larSprint } from "./LAR.js";
+    import { overdrive } from "./overdrive.js";
+
+    function stageRun(mode) {
+      const name = modul.value;
+
+      let result =
+        mode === "ECONOMY" ? larEconomy(name) :
+        mode === "SPRINT"  ? larSprint(name) :
+                             overdrive(name);
+
+      out.innerText = JSON.stringify(result, null, 2);
+    }
+  </script>
+
+  <style>
+    body { font-family: Arial; background:#000; color:#0f0; padding:20px; }
+    input { width:300px; padding:10px; font-size:16px; }
+    button { padding:10px 20px; margin:5px; font-size:16px; }
+    pre { background:#030; padding:20px; border-radius:8px; }
+  </style>
+</head>
+
+<body>
+  <h1>LAR STAGE</h1>
+
+  <input id="modul" placeholder="tmp007 / vec118 / re200">
+
+  <div>
+    <button onclick="stageRun('ECONOMY')">Stage Economy</button>
+    <button onclick="stageRun('SPRINT')">Stage Sprint</button>
+    <button onclick="stageRun('OVERDRIVE')">Stage Overdrive</button>
+  </div>
+
+  <pre id="out"></pre>
+</body>
+</html>
