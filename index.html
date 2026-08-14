@@ -1,25 +1,49 @@
-<script type="module">
-  import { lar } from "./EngineUnified.js";
-  import { overdrive } from "./overdrive.js";
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>LAR Engine</title>
 
-  function runEconomy() {
-    const name = modul.value;
-    out.innerText = JSON.stringify(lar(name, "ECONOMY"), null, 2);
-  }
+  <script type="module">
+    import { larEconomy } from "./Engine.js";
+    import { larSprint } from "./LAR.js";
+    import { overdrive } from "./overdrive.js";
 
-  function runSprint() {
-    const name = modul.value;
-    out.innerText = JSON.stringify(lar(name, "SPRINT"), null, 2);
-  }
+    function runEconomy() {
+      const name = modul.value;
+      out.innerText = JSON.stringify(larEconomy(name), null, 2);
+    }
 
-  function runOverdrive() {
-    const name = modul.value;
-    out.innerText = JSON.stringify(overdrive(name), null, 2);
-  }
-</script>
+    function runSprint() {
+      const name = modul.value;
+      out.innerText = JSON.stringify(larSprint(name), null, 2);
+    }
 
-<input id="modul" placeholder="tmp007 / vec118 / re200">
-<button onclick="runEconomy()">Economy</button>
-<button onclick="runSprint()">Sprint</button>
-<button onclick="runOverdrive()">Overdrive</button>
-<pre id="out"></pre>
+    function runOverdrive() {
+      const name = modul.value;
+      out.innerText = JSON.stringify(overdrive(name), null, 2);
+    }
+  </script>
+
+  <style>
+    body { font-family: Arial; background:#111; color:#eee; padding:20px; }
+    input { width:300px; padding:10px; font-size:16px; }
+    button { padding:10px 20px; margin:5px; font-size:16px; }
+    pre { background:#222; padding:20px; border-radius:8px; }
+  </style>
+</head>
+
+<body>
+  <h1>LAR Engine</h1>
+
+  <input id="modul" placeholder="tmp007 / vec118 / re200">
+
+  <div>
+    <button onclick="runEconomy()">Economy</button>
+    <button onclick="runSprint()">Sprint</button>
+    <button onclick="runOverdrive()">Overdrive</button>
+  </div>
+
+  <pre id="out"></pre>
+</body>
+</html>
