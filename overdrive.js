@@ -1,19 +1,16 @@
-import { karga } from "../KARGA/KARGA.js";
-import { larBoost, larSuggest, larCompetence, larRisk, larSlide, larLayer } from "./LAR6E.js";
+import { larSprint } from "./LAR.js";
 
-export function lar(name) {
-  const base = karga(name);
+export function overdrive(name) {
+  const base = larSprint(name);
 
   return {
-    modul: name,
-    axis: base.result.axis,
-    number: base.result.num,
-    ok: base.result.ok,
-    boost: larBoost(base.result).boost,
-    suggestion: larSuggest(base.result),
-    competence: larCompetence(base.result),
-    risk: larRisk(base.result),
-    slide: larSlide(base.result),
-    layer: larLayer(base.result)
+    ...base,
+    overdrive: true,
+    priority: base.ok ? "high" : "critical",
+    boostLevel: base.ok ? 2 : 5,
+    stageReady: base.ok ? "yes" : "needs-fix",
+    message: base.ok
+      ? "SPRINT Overdrive aktiv – maximale Leistung."
+      : "SPRINT Overdrive aktiv – Modul wird korrigiert."
   };
 }
